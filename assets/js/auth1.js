@@ -24,9 +24,7 @@ $("#googleLogin").on("click",function(){
     
     console.log("again sign:" , signIn);
      // return back if user is not signin
-   if (signInSuccess == "true") {
-    window.location.replace( "../FirebaseAuth/login.html");
-   }
+   
 
    
     
@@ -74,7 +72,7 @@ function toggleSignIn() {
         // [START_EXCLUDE]
         console.log("user :", user);
         signInSuccess = "true";
-        
+        redirectToLoginSuccessPage();
         // [END_EXCLUDE]
       }).catch(function(error) {
         // Handle Errors here.
@@ -131,3 +129,8 @@ function toggleSignIn() {
   }).catch(function(error) {
     // An error happened.
   });
+  function redirectToLoginSuccessPage(){
+    if (signInSuccess == "true") {
+        window.location.replace( "../FirebaseAuth/login.html");
+       }
+  }
