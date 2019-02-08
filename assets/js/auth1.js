@@ -54,10 +54,12 @@ function toggleSignIn() {
       firebase.auth().getRedirectResult().then(function(result) {
         if (result.credential) {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;}
-        // The signed-in user info.
+        var token = result.credential.accessToken;
         var user = result.user;
-        localStorage.setItem('userDetail', JSON.stringify(user))
+        localStorage.setItem('userDetail', JSON.stringify(user))}
+        // The signed-in user info.
+        //  user = result.user;
+        // localStorage.setItem('userDetail', JSON.stringify(user))
         // [START_EXCLUDE]
         console.log("user :", user);
         // [END_EXCLUDE]
