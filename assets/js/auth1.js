@@ -49,16 +49,13 @@ function toggleSignIn() {
       provider.addScope('https://www.googleapis.com/auth/plus.login');
       // [END addscopes]
       // [START signin]
-      firebase.auth().signInWithRedirect(provider);
-      firebase.auth().getRedirectResult().then(function(result) {
-        if (result.credential) {
+      firebase.auth().signInWithPopup(provider).then(function(result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
-        var user = result.user;
-        localStorage.setItem('userDetail', JSON.stringify(user))}
         // The signed-in user info.
-        //  user = result.user;
-        // localStorage.setItem('userDetail', JSON.stringify(user))
+        var user = result.user;
+        // The signed-in user info.
+        localStorage.setItem('userDetail', JSON.stringify(user))
         // [START_EXCLUDE]
         console.log("user :", user);
         // [END_EXCLUDE]
