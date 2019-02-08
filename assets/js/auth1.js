@@ -11,6 +11,7 @@ var config = {
 
 
   var signIn ="";
+  var signInSuccess = "";
 
 
  
@@ -20,11 +21,10 @@ $("#googleLogin").on("click",function(){
     console.log(signIn);
     toggleSignIn();
  
-    signIn =JSON.parse(localStorage.getItem('userDetail'));
+    
     console.log("again sign:" , signIn);
      // return back if user is not signin
-   if (signIn==null) return;
-   else {
+   if (signInSuccess == "true") {
     location.href = "../FirebaseAuth/login.html";
    }
 
@@ -73,6 +73,7 @@ function toggleSignIn() {
         localStorage.setItem('userDetail', JSON.stringify(user))
         // [START_EXCLUDE]
         console.log("user :", user);
+        signInSuccess = "true";
         
         // [END_EXCLUDE]
       }).catch(function(error) {
@@ -83,6 +84,7 @@ function toggleSignIn() {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential; 
+        signInSuccess = "false";
         // [START_EXCLUDE]
         if (errorCode === 'auth/account-exists-with-different-credential') {
           alert("You have already signed up with a different auth provider for that email.");
