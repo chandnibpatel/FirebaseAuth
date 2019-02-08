@@ -19,6 +19,7 @@ $("#googleLogin").on("click",function(){
     signIn=JSON.parse(localStorage.getItem('userDetail'));
     console.log(signIn);
     toggleSignIn();
+    console.log("again sign:" , signIn);
     signIn =JSON.parse(localStorage.getItem('userDetail'));
      // return back if user is not signin
    if (signIn==null) return;
