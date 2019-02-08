@@ -10,8 +10,15 @@ var config = {
   firebase.initializeApp(config);
 
 
-var provider = new firebase.auth.GoogleAuthProvider();
-toggleSignIn();
+  var signIn ="";
+
+$( document ).ready(function() {
+  signIn=JSON.parse(localStorage.getItem('userDetail'));
+  console.log(signIn);
+  if(signIn===null){toggleSignIn();}
+
+});
+
 
 // firebase.auth().signInWithRedirect(provider);
 
@@ -48,6 +55,7 @@ toggleSignIn();
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        localStorage.setItem('userDetail', JSON.stringify(user))
         // [START_EXCLUDE]
         console.log("user :", user);
         // [END_EXCLUDE]
