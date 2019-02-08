@@ -12,13 +12,12 @@ var config = {
 
   var signIn ="";
 
-$( document ).ready(function() {
-  signIn=JSON.parse(localStorage.getItem('userDetail'));
-  console.log(signIn);
-  if(signIn===null){toggleSignIn();}
+$("#googleLogin").on("click",function(){
+    signIn=JSON.parse(localStorage.getItem('userDetail'));
+    console.log(signIn);
+    toggleSignIn();
 
-});
-
+})
 
 // firebase.auth().signInWithRedirect(provider);
 
