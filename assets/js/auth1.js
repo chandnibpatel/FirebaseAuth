@@ -25,7 +25,7 @@ $("#googleLogin").on("click",function(){
     console.log("again sign:" , signIn);
      // return back if user is not signin
    if (signInSuccess == "true") {
-    location.href = "../FirebaseAuth/login.html";
+    window.location.replace( "../FirebaseAuth/login.html");
    }
 
    
