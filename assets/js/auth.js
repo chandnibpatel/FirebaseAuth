@@ -49,7 +49,7 @@ toggleSignIn();
         // The signed-in user info.
         var user = result.user;
         // [START_EXCLUDE]
-        document.getElementById('quickstart-oauthtoken').textContent = token;
+        console.log("user :", user);
         // [END_EXCLUDE]
       }).catch(function(error) {
         // Handle Errors here.
@@ -97,9 +97,7 @@ toggleSignIn();
       firebase.auth().signOut();
       // [END signout]
     }
-    // [START_EXCLUDE]
-    document.getElementById('quickstart-sign-ing').disabled = false;
-    // [END_EXCLUDE]
+  
   }
 
   firebase.auth().signOut().then(function() {
