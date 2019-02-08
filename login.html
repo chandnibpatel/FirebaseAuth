@@ -15,10 +15,31 @@
 
 <body>
     <div class="container">
-         <button type="button" class="btn btn-primary login-btn" data-target="#userLogin" location.href = "login.html">
-                Login with Google
-        </button>
-                            
+        <header>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center mt-1">
+                    <img src="https://via.placeholder.com/200x100" alt="Logo">
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card login-card">
+                        <h5 class="card-header">Login in as:</h5>
+                        <div class="card-body">
+                            <button type="button" class="btn btn-primary login-btn" data-toggle="modal" data-target="#userLogin">
+                                User
+                            </button>
+                            <button type="button" class="btn btn-primary login-btn" data-toggle="modal" data-target="#adminLogin">
+                                Admin
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
     </div>
    
     <!-- begin js files -->
