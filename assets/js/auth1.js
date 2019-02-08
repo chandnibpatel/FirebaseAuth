@@ -13,11 +13,10 @@ var config = {
   var signIn ="";
 
 $("#googleLogin").on("click",function(){
-    location.href = "../FirebaseAuth/login.html";
     signIn=JSON.parse(localStorage.getItem('userDetail'));
     console.log(signIn);
     toggleSignIn();
-   
+    
     
 
 })
@@ -61,6 +60,7 @@ function toggleSignIn() {
         localStorage.setItem('userDetail', JSON.stringify(user))
         // [START_EXCLUDE]
         console.log("user :", user);
+        location.href = "../FirebaseAuth/login.html";
         // [END_EXCLUDE]
       }).catch(function(error) {
         // Handle Errors here.
