@@ -12,54 +12,42 @@ var config = {
 
   var signIn ="";
   var signInSuccess = "";
-
-
+//Provider defult Google
+  var provider = new firebase.auth.GoogleAuthProvider();
  
 
 $("#googleLogin").on("click",function(){
     signIn=JSON.parse(localStorage.getItem('userDetail'));
-    console.log(signIn);
-    toggleSignIn();
- 
+    if (signIn==null)
+    {
+     provider = new firebase.auth.GoogleAuthProvider();
     
-    console.log("again sign:" , signIn);
-     // return back if user is not signin
-   
+      provider.addScope('https://www.googleapis.com/auth/plus.login');
+    webAuth();
+    }
+    else
+    redirectToLoginSuccessPage();
+  
+ })
 
-   
-    
-    
+ $(document).on("click","#facebookLogin",function(){
 
-})
+    signIn=JSON.parse(localStorage.getItem('userDetail'));
+    if (signIn==null)
+    {
+        provider = new firebase.auth.FacebookAuthProvider();
+        provider.addScope('user_birthday');
+    webAuth();
+    }
+    else
+    redirectToLoginSuccessPage();
+  
+ });
 
-// firebase.auth().signInWithRedirect(provider);
-
-// firebase.auth().getRedirectResult().then(function(result) {
-//     if (result.credential) {
-//       // This gives you a Google Access Token. You can use it to access the Google API.
-//       var token = result.credential.accessToken;
-//       // ...
-//     }
-//     // The signed-in user info.
-//     var user = result.user;
-//   }).catch(function(error) {
-//     // Handle Errors here.
-//     var errorCode = error.code;
-//     var errorMessage = error.message;
-//     // The email of the user's account used.
-//     var email = error.email;
-//     // The firebase.auth.AuthCredential type that was used.
-//     var credential = error.credential;
-//     // ...
-//   });
-
-function toggleSignIn() {
+function webAuth() {
     if (!firebase.auth().currentUser) {
       // [START createprovider]
-      var provider = new firebase.auth.GoogleAuthProvider();
-      // [END createprovider]
-      // [START addscopes]
-      provider.addScope('https://www.googleapis.com/auth/plus.login');
+      
       // [END addscopes]
       // [START signin]
       firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -123,6 +111,7 @@ function toggleSignIn() {
     }
   
   }
+
 
   firebase.auth().signOut().then(function() {
     // Sign-out successful.
