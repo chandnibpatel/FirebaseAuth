@@ -36,7 +36,7 @@ $("#googleLogin").on("click",function(){
     if (signIn==null)
     {
         provider = new firebase.auth.FacebookAuthProvider();
-        provider.addScope('user_birthday');
+      
     webAuth();
     }
     else
